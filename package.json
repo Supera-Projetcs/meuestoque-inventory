@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/app.js --exec",
-    "db": "node src/createDataBase.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
