@@ -20,9 +20,8 @@ module.exports = {
   createInventory: async (req, res) => {
     const inventoryData = req.body;
     try {
-      const id = await createInventoryModel(inventoryData);
-      const newInventory = { id: id || 0, ...inventoryData };
-      res.json(newInventory);
+      const db = await createInventoryModel(inventoryData);
+      res.json(db[0]);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
