@@ -5,6 +5,7 @@ const {
   updateInventoryModel,
   getInventoryByIdModel,
   updateInventoryQuantitiesModel,
+  getTotalInventoryCountModel
 } = require("../models/inventoryModel");
 
 module.exports = {
@@ -93,4 +94,13 @@ module.exports = {
       res.status(500).json({ error: "Erro interno do servidor" });
     }
   },
+  getTotalInventoryCount: async (req, res) => {
+    try {
+      const totalInventoryCount = await getTotalInventoryCountModel();
+      res.json({ totalInventoryCount });
+    } catch (error) {
+      console.error('Erro ao obter o total de inventários:', error);
+      res.status(500).json({ error: 'Erro interno do servidor' });
+    }
+  }
 };
