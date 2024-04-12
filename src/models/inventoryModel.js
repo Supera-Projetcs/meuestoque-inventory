@@ -3,7 +3,7 @@ const db = require("../db");
 module.exports = {
   getAllInventorysModel: async () => {
     try {
-      return await db("inventory").select("*");
+      return await db("inventory").select("*").orderBy("id", "desc");
     } catch (error) {
       console.error("Erro ao obter inventário:", error);
       throw error;
@@ -12,7 +12,7 @@ module.exports = {
 
   createInventoryModel: async (inventoryData) => {
     try {
-      return await db("inventory").insert(inventoryData).returning("id");
+      return await db("inventory").insert(inventoryData).returning("*");
     } catch (error) {
       console.error("Erro ao criar inventário:", error);
       throw error;
@@ -72,4 +72,13 @@ module.exports = {
       throw error;
     }
   },
+  getTotalInventoryCountModel: async () => {
+    try {
+      const totalInventoryCount = await db('inventory').count('*').first();
+      return totalInventoryCount.count;
+    } catch (error) {
+      console.error('Erro ao obter o total de inventários:', error);
+      throw error;
+    }
+  }
 };
