@@ -72,4 +72,13 @@ module.exports = {
       throw error;
     }
   },
+  getTotalInventoryCountModel: async () => {
+    try {
+      const totalInventoryCount = await db('inventory').count('*').first();
+      return totalInventoryCount.count;
+    } catch (error) {
+      console.error('Erro ao obter o total de inventários:', error);
+      throw error;
+    }
+  }
 };

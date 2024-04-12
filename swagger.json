@@ -199,6 +199,26 @@
             }
           }
         }
+      },
+      "/inventorys/count": {
+        "get": {
+          "summary": "Get total inventory count",
+          "operationId": "GetTotalInventoryCount",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "totalInventoryCount": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "definitions": {
